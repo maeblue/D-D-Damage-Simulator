@@ -1,13 +1,13 @@
 #Die Class, for simulating die rolls
-class die
+class Die
 
   #each die has a number of sides
-  attr_accessor :sides
+  attr_accessor :num_sides
 
   #initialize the die with it's number of sides
   #and possibly number of rolls
   def initialize(num_sides)
-    @sides = num_sides
+    @num_sides = num_sides
   end
 
   #generate the die rolls
@@ -20,7 +20,7 @@ class die
     num_rolls.times do |r|
       
       #generate a uniformly-distributed random number between 1 and num_sides
-      rolls << rand(num_sides) + 1
+      rolls << rand(@num_sides) + 1
     
     end
     
