@@ -12,7 +12,7 @@ class Attack
     @defense = defense
   end
 
-  def roll(num_rolls)
+  def roll(num_rolls=1)
     
     #holding array
     rolls = []
@@ -22,7 +22,7 @@ class Attack
       
       #generate a uniformly-distributed random number between 1 and num_sides
       #and add the modifier
-      rolls << [@attack.roll, @damage.roll, @defense]
+      rolls << [@attack_die.roll, @damage_die.roll, @defense]
     
     end
     
@@ -36,8 +36,11 @@ class Attack
     rolls = roll(num_rolls)
     
     #remove all rolls that are misses, and return only the damage column
-    rolls.map! | do |roll|
-      roll[1] if roll.first > roll.last
+    rolls.map!  do |roll|
+      puts roll[0].class.to_s + " " + roll.first.class.to_s
+      if roll.first[0] >= roll.last[0]
+        roll[1]
+      end
     end
     
     hits = rolls.length
