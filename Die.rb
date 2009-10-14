@@ -11,7 +11,7 @@ class Die
   end
 
   #generate the die rolls
-  def roll(num_rolls)
+  def roll(num_rolls=1)
     
     #holding array
     rolls = []
