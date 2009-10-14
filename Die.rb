@@ -28,6 +28,4 @@ class Die
     
   end
   
-    
-
 end
