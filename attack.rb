@@ -37,17 +37,22 @@ class Attack
     
     #remove all rolls that are misses, and return only the damage column
     rolls.map!  do |roll|
-      puts roll[0].class.to_s + " " + roll.first.class.to_s
-      if roll.first[0] >= roll.last[0]
+      puts roll.first[0].to_s + "-" + roll.last.to_s
+      if roll.first[0] >= roll.last
         roll[1]
       end
     end
     
+    rolls.compact!
+    
+    puts rolls
+    
     hits = rolls.length
     misses = num_rolls - hits
-    avg_damage = rolls.inject(0) {|avg,dmg| avg += dmg.to_f/num_rolls}
+    hit_ratio = hits.to_f/misses
+    avg_damage = rolls.inject(0) {|avg,dmg| avg += dmg[0].to_f/num_rolls}
     
-    return [rolls,hits,misses,avg_damage]
+    return [rolls,hits,misses,hit_ratio,avg_damage]
   end
 
 
