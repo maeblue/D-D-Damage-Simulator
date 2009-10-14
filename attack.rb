@@ -37,16 +37,13 @@ class Attack
     
     #remove all rolls that are misses, and return only the damage column
     rolls.map!  do |roll|
-      puts roll.first[0].to_s + "-" + roll.last.to_s
       if roll.first[0] >= roll.last
         roll[1]
       end
     end
     
     rolls.compact!
-    
-    puts rolls
-    
+        
     hits = rolls.length
     misses = num_rolls - hits
     hit_ratio = hits.to_f/misses
